@@ -1,0 +1,223 @@
+.container-order{
+    width: 1104px;
+    margin-top: 16px;
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+    margin: 66px auto;
+    padding: 20px;
+    .search-order{
+        display: flex;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        .input-search-order{
+            width: 50%;
+            input{
+                width: 200px;
+                height: 32px;
+                border-radius: 4px;
+                padding: 0px 10px;
+                border: 1px solid #e5e5e5;
+                outline-color: red;
+                &::placeholder{
+                    color: grey;
+                }
+            }
+        }
+        .action-order{
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .title-or{
+                font-size: 14px;
+                color: #333;
+            }
+            .date-or{
+                input{
+                    color: #333;
+                    background: white;
+                    border: 1px solid #e5e5e5;
+                    width: 200px;
+                    height: 28px;
+                }
+            }
+            .btn-export{
+                button{
+                    color: #333;
+                    width: 72px;
+                    height: 32px;
+                    background: white;
+                    border: 1px solid #e5e5e5;
+                }
+            }
+            .btn-download{
+                button{
+                    color: #333;
+                    width: 72px;
+                    height: 32px;
+                    background: white;
+                    border: 1px solid #e5e5e5;
+                }
+            }
+            button{
+                border-radius: 2px;
+                outline: none;
+                cursor: pointer;
+            }
+            div{
+                margin-left: 20px;
+            }
+        }
+    }
+    .order-main{
+        margin-top: 20px;
+        .title-order{
+            display: flex;
+            justify-content: space-between;
+            .title-main-or{
+                font-size: 25px;
+                font-weight: bold;
+            }
+            
+            .btn-send-all{
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    background-color: #ee4d2d;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    height: 40px;
+                    width: 150px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+    .title-or-detail{
+        display: flex;
+        font-size: 14px;
+        color: #333;
+        justify-content: space-between;
+        background: #f6f6f6;
+        margin-top: 20px;
+        padding: 20px;
+        position: -webkit-sticky;
+        position: sticky;
+        top:100px;
+        .pr-one{
+            width: 33%;
+        }
+    }
+    .order-main{
+        width: 100%;
+        .title-name-buyer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: hsla(0,0%,96%,.5);
+            .title-name-buyer-left{
+                display: flex;
+                align-items: center;
+                div{
+                    margin-right: 10px;
+                    font-size: 14px;
+                }
+                i{
+                    color: #ee4d2d;
+                }
+            }
+            img{
+                width: 25px;
+                border-radius: 100%;
+                margin-right: 10px;
+            }
+        }
+        .title-name-buyer-right{
+            font-size: 14px;
+        }
+        .product-order{
+            width: 100%;
+            align-items: center;
+            margin: 10px 0px;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            .product-order-item-y{
+                display: flex;
+                margin: 10px 0px;
+                width: 100%;
+            }
+            .img{
+                img{
+                    width: 56px;
+                    height: 56px;
+                    border: 1px solid #e5e5e5;
+                    padding: 0px 5px;
+                }
+            }
+            .name-pr{
+                font-size: 13px;
+                margin-left: 10px;
+                .order-front-product{
+                    font-weight: normal;
+                    margin-bottom: 10px;
+                    color: #ee4d2d;
+                    text-align: center;
+                    border-radius: 1px;
+                    background-color: #fff1f0;
+                    padding: 3px;
+                    font-weight: bold;
+                    text-transform: capitalize;
+                    width: 40%;
+                }
+                &:nth-child(2){
+                    font-weight: bold;
+                    margin-top: 3px;
+                }
+            }
+            .order-right{
+                display: flex;
+                justify-content: space-between;
+                .sum-order{
+                    margin-left: 60px;
+                    .canceled{
+                        font-weight: bold;
+                    }
+                    .substatus{
+                        font-size: 12px;
+                        margin-top: 10px;
+                    }
+                    .see-detail-order{
+                        color: #2673dd;
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+        }
+    }
+
+    .pagination-order{
+        display: flex;
+        justify-content: flex-end;
+        position: -webkit-sticky;
+        bottom: 0;
+        position: sticky;
+        background: white;
+        cursor: pointer;
+        .number-pagi{
+            display: flex;
+            margin: 0px 10px;
+            i{
+            }
+            div {
+                margin: 0px 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,122 @@
+.container-add-product{
+    width: 1200px;
+    margin: 0px auto;
+    display: flex;
+    .add-product{
+        width: 800px;
+        margin-top: 60px;
+        .infor-basic{
+            padding: 32px 40px;
+            margin-top: 15px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgb(0 0 0 / 9%) 0px 0.2rem 0.4rem;
+            width: 100%;
+            .form-group{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 30px;
+                .name{
+                    font-size: 14px;
+                    color: grey;
+                }
+                .form-input{
+                    width: 84%;
+                    input{
+                        width: 100%;
+                        border: 1px solid #1913131a;
+                        height: 30px;
+                        padding: 0px 10px;
+                        outline: none;
+                    }
+                    textarea{
+                        width: 100%;
+                        border: 1px solid #1913131a;
+                        height: 140px;
+                        padding: 5px 10px;
+                        outline: none;
+                    }
+                    p{
+                        font-size: 14px;
+                        color: grey;
+                    }
+                    select{
+                        width: 100%;
+                        border: 1px solid #1913131a;
+                        height: 30px;
+                        padding: 0px 10px;
+                        outline: none;
+                    }
+                }
+                
+            }
+            .form-group-image{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 30px;
+                .name{
+                    font-size: 14px;
+                    color: grey;
+                    margin-top: 22px;
+                }
+                .content-img{
+                    width: 84%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .images{
+                        width: 115px;
+                        height: 115px;
+                        margin: 20px 7px;
+                        .title-img{
+                            font-size: 13px;
+                            color: grey;
+                            text-align: center;
+                            margin: 10px 0px;
+                        }
+                        .image{
+                            border: 1px dashed rgb(23, 145, 242);
+                            align-items: center;
+                            .plus-img{
+                                width: 29px;
+                                height: 29px;
+                                border: 1px solid rgb(23, 145, 242);
+                                border-radius: 100% ;
+                                margin: 43px auto;
+                                text-align: center;
+                                left: 29px;
+                                color: rgb(23, 145, 242);
+                                font-size: 26px;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        .bottom{
+            position: -webkit-sticky;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end !important;
+            box-shadow: rgb(0 0 0 / 12%) 0px -2px 6px 0px;
+            button{
+                width: 150px;
+                height: 35px;
+                margin-left: 20px;
+                background: white;
+                border: 1px solid #e5e5e5;
+                border-radius: 4px;
+                cursor: pointer;
+                &:nth-child(3){
+                    color: #fff;
+                    background-color: #ee4d2d;
+                    border-color: #ee4d2d;
+                }
+            }
+        }
+    }
+}

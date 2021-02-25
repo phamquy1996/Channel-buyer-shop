@@ -10,6 +10,7 @@
         <th><abbr title="Lost">Actions</abbr></th>
       </tr>
     </thead>
+    
     <tbody v-if="tasks">
       <tr v-for="task in tasks" :key="task.id">
         <TaskListItem  v-bind="task" />

@@ -1,0 +1,24 @@
+.status{
+    display: flex;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top:54px;
+    background: white;
+    z-index: 66;
+    .select-status{
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 1px solid #a59b9b3b;
+        width: 14.4%;
+        text-align: center;
+        line-height: 50px;
+        &:nth-child(1){
+            color: red;
+            font-weight: bold;
+            border-bottom: 1px solid red ;
+        }
+    }
+}
