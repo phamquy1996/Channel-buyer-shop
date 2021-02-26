@@ -1,308 +1,302 @@
-.container-order{
-    width: 1200px;
-    margin: 0px auto;
-    display: flex;
-    .container-detail-left{
-        width: 912px;
-        .status-detail{
-            margin-top: 70px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            i{
-                color: red;
-                margin-right: 10px ;
-            }
+.container-order {
+  width: 1200px;
+  margin: 0px auto;
+  display: flex;
+  .container-detail-left {
+    width: 912px;
+    .status-detail {
+      margin-top: 70px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      i {
+        color: red;
+        margin-right: 10px;
+      }
+      font-weight: bold;
+    }
+    .history-buyer {
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      display: flex;
+      .history-buyer-left {
+        display: flex;
+        width: 50%;
+        .buyer {
+          margin-left: 10px;
+          padding: 0px 20px;
+          .title-buyer {
             font-weight: bold;
+          }
+          .note-buyer {
+            font-size: 13px;
+            color: #333;
+            margin-top: 10px;
+          }
         }
-        .history-buyer{
-            margin-top: 20px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            display: flex;
-            .history-buyer-left{
-                display: flex;
-                width: 50%;
-                .buyer{
-                    margin-left: 10px;
-                    padding: 0px 20px;
-                    .title-buyer{
-                        font-weight: bold;
-                    }
-                    .note-buyer{
-                        font-size: 13px;
-                        color: #333;
-                        margin-top: 10px;
-                    }
-                    
-                }
-                &::after{
-                    content: "";
-                    border: 1px solid #e5e5e5;
-                }
-            }
-            .history-buyer-right{
-                display: flex;
-                padding: 0px 20px;
-                width: 50%;
-                .total-order-buyer{
-                    display: flex;
-                    width: 50%;
-                    padding: 0px 10px;
-                    align-items: center;
-                    .percent{
-                        width: 48px;
-                        height: 48px;
-                        background: #f6f6f6;
-                        border-radius: 100%;
-                        color: red;
-                        line-height: 48px;
-                        text-align: center;
-                        font-size: 13px;
-                        font-weight: bold;
-                    }
-                    .sub-buyer{
-                        margin-left: 20px;
-                        div{
-                            &:nth-child(1){
-                                font-size: 14px;
-                            }
-                            &:nth-child(2){
-                                font-size: 12px;
-                                margin-top: 5px;
-                                color: #00bfa5;
-                            }
-                        }
-                    }
-                }
-            }
-            // font-weight: bold;
-            .buyer-right{
-                margin-left: 10px;
-            }
+        &::after {
+          content: "";
+          border: 1px solid #e5e5e5;
         }
-        .main-detail-order{
-            margin-top: 20px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            .history-buyer-left{
-                display: flex;
-                width: 100%;
-                margin-top: 20px;
-                .buyer{
-                    margin-left: 10px;
-                    padding: 0px 20px;
-                    width: 100%;
-                    .title-buyer{
-                        font-weight: bold;
-                    }
-                    .note-buyer{
-                        font-size: 13px;
-                        color: #333;
-                        margin-top: 10px;
-                    }
-                    .map-status{
-                        background-color: #fafafa;
-                        margin-top: 8px;
-                        padding: 16px 24px;
-                        overflow: hidden;
-                        width: 95%;
-                        .child-status{
-                            margin-bottom: 20px;
-                            .status-time{
-                                font-size: 14px;
-                                font-weight: bold;
-                            }
-                            &:nth-child(1){
-                                color: #00bfa5;
-                            }
-                            .time{
-                                font-size: 12px;
-                                margin-top: 3px;
-                                color: #bababa;
-                            }
-                        }
-                    }
-                    
-                }
+      }
+      .history-buyer-right {
+        display: flex;
+        padding: 0px 20px;
+        width: 50%;
+        .total-order-buyer {
+          display: flex;
+          width: 50%;
+          padding: 0px 10px;
+          align-items: center;
+          .percent {
+            width: 48px;
+            height: 48px;
+            background: #f6f6f6;
+            border-radius: 100%;
+            color: red;
+            line-height: 48px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          .sub-buyer {
+            margin-left: 20px;
+            div {
+              &:nth-child(1) {
+                font-size: 14px;
+              }
+              &:nth-child(2) {
+                font-size: 12px;
+                margin-top: 5px;
+                color: #00bfa5;
+              }
             }
+          }
         }
-        .buyer-box{
-            display: flex;
-            justify-content: space-between !important;
-            margin-top: 20px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            align-items: center;
-            .buyer-left{
-                display: flex;
-                align-items: center;
-                .buyer-avatar{
-                    width: 44px;
-                    height: 44px;
-                    border-radius: 100%;
-                    background: grey;
-                }
-                .buyer-name{
-                    margin-left: 5px;
-                    font-size: 13px;
-                    font-weight: bold;
-                    color: grey;
-                }
-            }
-            
-            button{
-                padding: 8px 30px;
-                margin-left: 10px;
-                background: #ee4d2d;
-                color: white;
-                border: 1px solid #e5e5e5;
-                border-radius: 5px ;
-                cursor: pointer;
-            }
-            
-        }
-        .buyer-boxx{
-            margin-top: 20px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            align-items: center;
-            .buyer-box-test{
-                display: flex;
+      }
+      // font-weight: bold;
+      .buyer-right {
+        margin-left: 10px;
+      }
+    }
+    .main-detail-order {
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      .history-buyer-left {
+        display: flex;
+        width: 100%;
+        margin-top: 20px;
+        .buyer {
+          margin-left: 10px;
+          padding: 0px 20px;
+          width: 100%;
+          .title-buyer {
+            font-weight: bold;
+          }
+          .note-buyer {
+            font-size: 13px;
+            color: #333;
+            margin-top: 10px;
+          }
+          .map-status {
+            background-color: #fafafa;
+            margin-top: 8px;
+            padding: 16px 24px;
+            overflow: hidden;
+            width: 95%;
+            .child-status {
+              margin-bottom: 20px;
+              .status-time {
                 font-size: 14px;
                 font-weight: bold;
-                justify-content: space-between;
+              }
+              &:nth-child(1) {
+                color: #00bfa5;
+              }
+              .time {
+                font-size: 12px;
+                margin-top: 3px;
+                color: #bababa;
+              }
             }
-            .title-pr{
-                display: flex;
-                
-                background: #fafafa;
-                line-height: 30px;
-                height: 30px;
-                font-size: 13px;
-                margin-top: 20px;
-                padding: 0px 10px;
-                .stt{
-                    width: 10%;
-                }
-                .t-pr{
-                    width: 50%;
-                }
-                .price-or{
-                    width: 15%;
-                }
-                .qty{
-                    width: 15%;
-                }
-                .total{
-                    width: 15%;
-                }
-            }
-            .img-name{
-                display: flex;
-                img{
-                    height: 65px;
-                    width: 65px;
-                    border: 1px solid #e5e5e5;
-                }
-                .name{
-                    margin-left: 10px;
-                    font-size: 14px;
-                }
-            }
-            .product{
-                display: flex;
-                align-items: center;
-                margin: 10px 0px;
-                font-size: 14px;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #e5e5e5;
-                .stt{
-                    width: 10%;
-                }
-                .t-pr{
-                    width: 50%;
-                }
-                .price-or{
-                    width: 15%;
-                }
-                .qty{
-                    width: 15%;
-                }
-                .total{
-                    width: 15%;
-                }
-            }
-            .total-order{
-                display: flex;
-                div{
-                    margin-top: 10px;
-                    font-size: 14px;
-                }
-                .total-order-left{
-                    width: 80%;
-                    text-align: right;
-                    border-right: 1px solid #e5e5e5 ;
-                    padding-right: 15px;
-                }
-                .total-order-right{
-                    width: 20%;
-                    text-align: right;
-                    .sum{
-                        color: red;
-                        font-weight: bold;
-                        font-size: 20px;
-                    }
-                }
-                
-            }
+          }
         }
-        .total-end{
-            margin-top: 20px;
-            width: 100%;
-            box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
-            padding: 20px 20px;
-            align-items: center;
-            .title-buyer{
-                font-weight: bold;
-                width: 100%;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #e5e5e5;
-            }
-            .total-order{
-                display: flex;
-                div{
-                    margin-top: 10px;
-                    font-size: 14px;
-                }
-                .total-order-left{
-                    width: 80%;
-                    text-align: right;
-                    border-right: 1px solid #e5e5e5 ;
-                    padding-right: 15px;
-                }
-                .total-order-right{
-                    width: 20%;
-                    text-align: right;
-                    .sum{
-                        color: red;
-                        font-weight: bold;
-                        font-size: 20px;
-                    }
-                }
-                
-            }
+      }
+    }
+    .buyer-box {
+      display: flex;
+      justify-content: space-between !important;
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      align-items: center;
+      .buyer-left {
+        display: flex;
+        align-items: center;
+        .buyer-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 100%;
+          background: grey;
         }
+        .buyer-name {
+          margin-left: 5px;
+          font-size: 13px;
+          font-weight: bold;
+          color: grey;
+        }
+      }
+
+      button {
+        padding: 8px 30px;
+        margin-left: 10px;
+        background: #ee4d2d;
+        color: white;
+        border: 1px solid #e5e5e5;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     }
-    .container-detail-right{
-        
+    .buyer-boxx {
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      align-items: center;
+      .buyer-box-test {
+        display: flex;
+        font-size: 14px;
+        font-weight: bold;
+        justify-content: space-between;
+      }
+      .title-pr {
+        display: flex;
+
+        background: #fafafa;
+        line-height: 30px;
+        height: 30px;
+        font-size: 13px;
+        margin-top: 20px;
+        padding: 0px 10px;
+        .stt {
+          width: 10%;
+        }
+        .t-pr {
+          width: 50%;
+        }
+        .price-or {
+          width: 15%;
+        }
+        .qty {
+          width: 15%;
+        }
+        .total {
+          width: 15%;
+        }
+      }
+      .img-name {
+        display: flex;
+        img {
+          height: 65px;
+          width: 65px;
+          border: 1px solid #e5e5e5;
+        }
+        .name {
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+      .product {
+        display: flex;
+        align-items: center;
+        margin: 10px 0px;
+        font-size: 14px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        .stt {
+          width: 10%;
+        }
+        .t-pr {
+          width: 50%;
+        }
+        .price-or {
+          width: 15%;
+        }
+        .qty {
+          width: 15%;
+        }
+        .total {
+          width: 15%;
+        }
+      }
+      .total-order {
+        display: flex;
+        div {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+        .total-order-left {
+          width: 80%;
+          text-align: right;
+          border-right: 1px solid #e5e5e5;
+          padding-right: 15px;
+        }
+        .total-order-right {
+          width: 20%;
+          text-align: right;
+          .sum {
+            color: red;
+            font-weight: bold;
+            font-size: 20px;
+          }
+        }
+      }
     }
+    .total-end {
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+      padding: 20px 20px;
+      align-items: center;
+      .title-buyer {
+        font-weight: bold;
+        width: 100%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .total-order {
+        display: flex;
+        div {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+        .total-order-left {
+          width: 80%;
+          text-align: right;
+          border-right: 1px solid #e5e5e5;
+          padding-right: 15px;
+        }
+        .total-order-right {
+          width: 20%;
+          text-align: right;
+          .sum {
+            color: red;
+            font-weight: bold;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+  .container-detail-right {
+  }
 }
 
-i{
-    color: #ee4d2d;
+i {
+  color: #ee4d2d;
 }

@@ -202,22 +202,5 @@
         }
     }
 
-    .pagination-order{
-        display: flex;
-        justify-content: flex-end;
-        position: -webkit-sticky;
-        bottom: 0;
-        position: sticky;
-        background: white;
-        cursor: pointer;
-        .number-pagi{
-            display: flex;
-            margin: 0px 10px;
-            i{
-            }
-            div {
-                margin: 0px 15px;
-            }
-        }
-    }
+    
 }

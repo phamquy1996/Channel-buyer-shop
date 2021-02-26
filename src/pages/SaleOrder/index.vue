@@ -30,18 +30,8 @@
     <OrderItem/>
     <OrderItem/>
     <OrderItem/>
-    <div class="pagination-order">
-      <div>
-        <i class="fas fa-arrow-left"></i>
-      </div>
-      <div class="number-pagi">
-        <div>1</div>
-        <div>2</div>
-      </div>
-      <div>
-        <i class="fas fa-arrow-right"></i>
-      </div>
-    </div> 
+
+    <Paginate/> 
   </div>
 </template>
 <script>
@@ -49,11 +39,13 @@ import "./index.scss";
 import { defineComponent } from 'vue'
 import OrderItem from './../../components/SaleOrder/index.vue'
 import Menu from './../../components/Menu/index.vue'
+import Paginate from './../../components/Paginate/index.vue'
 export default defineComponent({
   name:'saleOrder',
   components:{
     OrderItem,
-    Menu
+    Menu,
+    Paginate
   }
 });
 </script>

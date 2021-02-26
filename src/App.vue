@@ -35,4 +35,14 @@ export default defineComponent({
   width: 100%;
   display: flex;
 }
+input{
+  cursor: pointer;
+}
+button{
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
 </style>

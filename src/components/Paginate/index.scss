@@ -1,0 +1,21 @@
+.pagination-order{
+    display: flex;
+    justify-content: flex-end;
+    position: -webkit-sticky;
+    bottom: 0;
+    position: sticky;
+    background: white;
+    z-index: 99;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 10px 0px;
+    .number-pagi{
+        display: flex;
+        margin: 0px 10px;
+        i{
+        }
+        div {
+            margin: 0px 15px;
+        }
+    }
+}

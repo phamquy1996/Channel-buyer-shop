@@ -44,6 +44,31 @@ const routes: Array<RouteRecordRaw> = [
     path:'/product/list/',
     name: '/product/list',
     component: () => import('./../pages/ListProduct/index.vue')
+  },
+  {
+    path:'/rating/shop/',
+    name: '/rating/rating',
+    component: () => import('./../pages/RatingShop/index.vue')
+  },
+  {
+    path:'/settings/shop/profile',
+    name: '/settings/shop/profile',
+    component: () => import('./../pages/Profile/index.vue')
+  },
+  {
+    path:'/address/shop/',
+    name: '/address/shop/',
+    component: () => import('./../pages/Address/index.vue')
+  },
+  {
+    path:'/setting/shop/',
+    name: '/setting/shop/',
+    component: () => import('./../pages/SettingShop/index.vue')
+  },
+  {
+    path:'/shop/account/',
+    name: '/shop/account/',
+    component: () => import('./../pages/Account/index.vue')
   }
 ] 
 

@@ -1,0 +1,47 @@
+.infor-rating{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    align-items: center;
+    padding: 20px 0px;
+    .rating-name-img{
+        display: flex;
+        width: 30%;
+        img{
+            width: 40px;
+        }
+        div{
+            &:nth-child(2){
+                margin-left: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+    .rating-rep{
+        width: 30%;
+        i{
+            font-size: 13px;
+            color: red;
+        }
+        font-size: 14px;
+        div{
+            &:nth-child(2){
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+        .imgs{
+            display: flex;
+            margin-top: 10px;
+            img{
+                width: 75px;
+                height: 75px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .admin-rep{
+        width: 30%;
+        font-size: 14px;
+    }
+}

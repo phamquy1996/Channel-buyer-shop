@@ -43,124 +43,68 @@
         <button><i class="fas fa-border-all"></i></button>
       </div>
     </div>
-    <div class="admin-products">
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
+    <!-- <div class="admin-products">
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+      <ProductItem/>
+    </div> -->
+    <div class="admin-product-table">
+      <div class="admin-title-product">
+        <div><input type="checkbox"></div>
+        <div class="admin-title-img-name">Tên sản phẩm</div>
+        <div>Phân loại hàng</div>
+        <div>Gía</div>
+        <div>Kho hàng</div>
+        <div>Đã bán</div>
+        <div>Sửa thông tin</div>
       </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+      <ProductItemTable/>
+    </div>
+    <Paginate/>
+    <div class="box-select-product">
+      <div class="check-list">
+        <div><input type="checkbox"></div>
+        <div>Chon tất cả</div>
       </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
+      <div class="action-check"> 
+        <div>1 sản phẩm được chon</div>
+        <div>
+          <button>Xóa</button>
         </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
+        <div>
+          <button>Ẩn</button>
         </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
-      </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
-      </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
-      </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
-        </div>
-      </div>
-      <div class="admin-product-item">
-        <img src="https://cf.shopee.vn/file/aeef070424e70dfd51027c21267a08a7_tn" alt="">
-        <a href="">Bông tẩy trang ISANA Hàng xách tay Đức</a>
-        <div class="flex">
-          <div>₫65.000</div>
-          <div>Kho hàng 93</div>
-        </div>
-        <div class="flex">
-          <div><i class="far fa-eye"></i>0</div>
-          <div><i class="far fa-heart"></i>0</div>
-          <div>Đã bán 6</div>
-        </div>
-        <div class="flex">
-          <div class="edit-pr"><i class="fas fa-pen"></i></div>
-          <div class="action-pr-item">...</div>
+        <div>
+          <button>Hiển thị</button>
         </div>
       </div>
     </div>
@@ -168,12 +112,21 @@
 </template>
 <script>
 import "./index.scss";
+import ProductItem from './../../components/Product/ProductItem.vue'
+import ProductItemTable from './../../components/Product/ProductItemTable.vue'
 import { defineComponent } from 'vue'
 import Menu from './../../components/Menu/index.vue'
+import Paginate from './../../components/Paginate/index.vue'
 export default defineComponent({
   name:'saleOrder',
   components:{
-    Menu
+    Menu,
+    ProductItem,
+    ProductItemTable,
+    Paginate
+  },
+  setup(){
+
   }
 });
 </script>

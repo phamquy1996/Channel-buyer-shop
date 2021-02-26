@@ -1,0 +1,101 @@
+.container-admin-rating{
+    background-color: #fff;
+    -webkit-box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+    box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 9%);
+    width: 1140px;
+    margin: 70px auto;
+    padding: 20px;
+    .title-ratng-admin{
+        display:flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 20px;
+        .title-ratng-admin-right{
+            display: flex;
+            align-items: center;
+            
+            div{
+                &:nth-child(1){
+                    font-size: 40px;
+                    color: #ee4d2d;
+                }
+                &:nth-child(2){
+                    font-size: 16px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .title-ratng-admin-left{
+           div{
+            &:nth-child(1){
+                font-size: 20px;
+                font-weight: bold;
+            }
+            &:nth-child(2){
+                font-size: 14px;
+                color: #999;
+                margin-top: 10px;
+            }
+           }
+        }
+    }
+    .filter-rating-admin{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        .form-filter{
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            input{
+                margin-left: 10px;
+                height: 28px;
+                width: 200px;
+                border: 1px solid #e5e5e5;
+            }
+        }
+    }
+    .btn-filter-rating{
+        button{
+            padding: 6px 35px;
+            margin-right: 20px;
+            &:nth-child(1){
+                background: #ee4d2d;
+                color: white;
+                border: 1px solid #ee4d2d;
+                outline: none;
+            }
+            &:nth-child(2){
+                background: white;
+                color: #333;
+                border: 1px solid #e5e5e5;
+                outline: none;
+            }
+        }
+    }
+
+    .btn-filter-rating-action{
+        button{
+            font-size: 14px;
+            padding: 5px 23px;
+            background: white;
+            outline: none;
+            color: #333;
+            border: 1px solid #e5e5e5;
+        }
+    }
+    .title-item-rating{
+        display: flex;
+        justify-content: space-between;
+        color: #888;
+        height: 34px;
+        border-radius: 4px;
+        background: #f2f2f2;
+        margin-top: 16px;
+        align-items: center;
+        padding: 0px 20px;
+        font-size: 14px;
+    }
+
+    
+}
