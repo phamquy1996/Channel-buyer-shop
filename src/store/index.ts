@@ -1,45 +1,35 @@
-import {
-  createStore,
-  Store as VuexStore,
-  CommitOptions,
-  DispatchOptions,
-  createLogger
-} from 'vuex'
+import { createStore, createLogger } from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
-import { State, state } from './state'
-import { Mutations, mutations } from './mutations'
-import { Actions, actions } from './actions'
-import { Getters, getters } from './getters'
+// TODO: How to surpass cyclical dependency linting errors cleanly?
+// eslint-disable-next-line import/no-cycle
+import { store as documents, DocumentsStore, State as DocumentsState } from '@/store/modules/documents';
+// eslint-disable-next-line import/no-cycle
+import { store as profile, ProfileStore, State as ProfileState } from '@/store/modules/profile';
 
-export const store = createStore<State>({
-  plugins: process.env.NODE_ENV === 'development' ? [createLogger()] : [],
-  state,
-  mutations,
-  actions,
-  getters
-})
+export type RootState = {
+  documents: DocumentsState;
+  profile: ProfileState;
+};
 
-export function useStore() {
-  return store as Store
-}
+export type Store = DocumentsStore<Pick<RootState, 'documents'>>
+ & ProfileStore<Pick<RootState, 'profile'>>;
 
-export type Store = Omit<
-  VuexStore<State>,
-  'getters' | 'commit' | 'dispatch'
-> & {
-  commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
-    key: K,
-    payload: P,
-    options?: CommitOptions
-  ): ReturnType<Mutations[K]>;
-} & {
-  dispatch<K extends keyof Actions>(
-    key: K,
-    payload?: Parameters<Actions[K]>[1],
-    options?: DispatchOptions
-  ): ReturnType<Actions[K]>;
-} & {
-  getters: {
-    [K in keyof Getters]: ReturnType<Getters[K]>
-  };
+// Plug in logger when in development environment
+const debug = process.env.NODE_ENV !== 'production';
+const plugins = debug ? [createLogger({})] : [];
+
+// Plug in session storage based persistence
+plugins.push(createPersistedState({ storage: window.sessionStorage }));
+
+export const store = createStore({
+  plugins,
+  modules: {
+    documents,
+    profile,
+  },
+});
+
+export function useStore(): Store {
+  return store as Store;
 }
