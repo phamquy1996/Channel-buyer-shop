@@ -14,82 +14,80 @@
       </div>
       <div class="category-show">
         <div class="category">
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-
-          <div class="name-category">
-            <div>Giặt giũ & Chăm sóc nhà cửa</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
-            <div>></div>
-          </div>
-
-          <div class="name-category">
-            <div>Bách hóa onlline</div>
+          <div class="name-category" v-for="item in tasks" :key="item.id" @click="filterSubcategory(item.id)">
+            <div>{{item.name}}</div>
             <div>></div>
           </div>
         </div>
-        <div class="category"></div>
-        <div class="category"></div>
+        <div class="category">
+          <div class="name-category" v-for="item in subCategoies" :key="item.id" @click="filterChilSubcategory(item.id)">
+            <div>{{item.name}}</div>
+            <div>></div> 
+          </div>
+        </div>
+        <div class="category">
+          <div class="name-category" v-for="item in childCategories" :key="item.id" @click="filterChilSubcategory(item.id)">
+            <div>{{item.name}}</div>
+            <div>></div> 
+          </div>
+        </div>
       </div>
     </div>
     <div class="cate-seleted">
       <div>Đã chọn : <span style="color:red;">Giặt giũ & Chăm sóc nhà cửa > Thuốc diệt côn trùng > Hóa chất diệt côn trùng</span></div>
     </div>
     <div class="buton-next">
-      <button>Tiếp theo</button>
+      <button @click="fetchDocuments()">Tiếp theo</button>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed, reactive, toRefs } from "vue";
 import "./index.scss";
+import { useStore } from '@/store'
+import { DocumentsActionTypes } from '@/store/modules/documents/action-types';
 export default defineComponent({
   name: "addCateProduct",
+  setup(){
+    const state = reactive({
+      title: 'anhquy',
+      description: '',
+      createdBy: '',
+      assignedTo: '',
+      subcate:[],
+      cate:[]
+    })
+    const store = useStore()
+    async function fetchDocuments() {
+      try {
+        var data = await store.dispatch(DocumentsActionTypes.FETCH_DOCUMENTS, '1');
+        
+        console.log(store.state.documents.categories)
+      } catch (error) {
+        console.error('fetchDocuments', error);
+      }
+    }
+    const filterSubcategory = async (id:Number) =>{
+      // state.subcate = tasks.filter(item => item.id == id)
+      await store.dispatch(DocumentsActionTypes.FILTER_SUBCATEGORY, id)
+    }
+
+    const filterChilSubcategory = async (id:Number) =>{
+      await store.dispatch(DocumentsActionTypes.FILTER_CHILDSUBCATEGORY, id)
+    }
+
+    const tasks = computed(() => {console.log(store.state.documents.categories); return store.state.documents.categories})
+    const subCategoies = computed(() => {console.log(store.state.documents.subcategoris); return store.state.documents.subcategoris})
+    const childCategories = computed(() => {console.log(store.state.documents.childCategoris); return store.state.documents.childCategoris})
+    return {
+      fetchDocuments,
+      tasks,
+      filterSubcategory,
+      subCategoies,
+      childCategories,
+      filterChilSubcategory,
+      ...toRefs(state)
+    };
+  }
 });
 </script>

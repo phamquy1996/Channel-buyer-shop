@@ -2,4 +2,6 @@
 // eslint-disable-next-line no-shadow
 export enum DocumentsMutationTypes {
   SET_DATA = 'SET_DATA',
+  SET_SUBCATEGORY = 'SET_SUBCATEGORY',
+  SET_CHILDSUBCATEGORY = 'SET_CHILDSUBCATEGORY'
 }
