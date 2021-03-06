@@ -31,6 +31,10 @@ export interface Actions {
     { commit }: AugmentedActionContext,
     someId: Number, // Obsolete in here but left as an example
   ): Promise<boolean>;
+  [DocumentsActionTypes.SET_NAME_PRODUCT](
+    { commit }: AugmentedActionContext,
+    nameProduct: String
+  ): Promise<boolean>;
 }
 
 export const actions: ActionTree<State, RootState> & Actions = {
@@ -76,6 +80,13 @@ export const actions: ActionTree<State, RootState> & Actions = {
         })
         return true;
       });
+    });
+  },
+
+  async [DocumentsActionTypes.SET_NAME_PRODUCT]({ commit }, someId: String) {
+    return new Promise(() => {
+      commit(DocumentsMutationTypes.SET_NAME_PRODUCT, {nameProduct: someId});
+      return true
     });
   },
 };

@@ -5,28 +5,28 @@
     <div class="form-input-name">
       <div class="name-t">Tên sản phẩm:</div>
       <div class="input-t">
-        <input type="text" />
+        <input type="text" v-model="nameProduct"/>
       </div>
     </div>
     <div class="choose-category">
       <div class="form-search-cate">
-        <input type="text" placeholder="Tên ngành hàng" />
+        <input type="text" placeholder="Tên ngành hàng"  />
       </div>
       <div class="category-show">
         <div class="category">
-          <div class="name-category" v-for="item in tasks" :key="item.id" @click="filterSubcategory(item.id)">
+          <div class="name-category" v-for="item in tasks" :key="item.id" @click="filterSubcategory(item)">
             <div>{{item.name}}</div>
             <div>></div>
           </div>
         </div>
         <div class="category">
-          <div class="name-category" v-for="item in subCategoies" :key="item.id" @click="filterChilSubcategory(item.id)">
+          <div class="name-category" v-for="item in subCategoies" :key="item.id" @click="filterChilSubcategory(item)">
             <div>{{item.name}}</div>
             <div>></div> 
           </div>
         </div>
         <div class="category">
-          <div class="name-category" v-for="item in childCategories" :key="item.id" @click="filterChilSubcategory(item.id)">
+          <div class="name-category" v-for="item in childCategories" :key="item.id" @click="chooseChildCate(item)" >
             <div>{{item.name}}</div>
             <div>></div> 
           </div>
@@ -34,14 +34,31 @@
       </div>
     </div>
     <div class="cate-seleted">
-      <div>Đã chọn : <span style="color:red;">Giặt giũ & Chăm sóc nhà cửa > Thuốc diệt côn trùng > Hóa chất diệt côn trùng</span></div>
+      <div >Đã chọn : <span style="color:red;">{{ cateName }} > {{ subcateName}} > {{ childCateName }}</span></div>
     </div>
     <div class="buton-next">
-      <button @click="fetchDocuments()">Tiếp theo</button>
+      <router-link :to="{ name: '/product/new'}"><button @click="fetchDocuments()" >Tiếp theo</button></router-link>
     </div>
   </div>
 </template>
 <script lang="ts">
+interface Category {
+    id: Number,
+    name: string,
+}
+
+interface State {
+  title: String,
+  description: String,
+  createdBy: String,
+  assignedTo: String,
+  subcate:[],
+  cateName:String,
+  subcateName:String,
+  childCateName:String,
+  cate:[],
+  nameProduct:String
+}
 import { defineComponent, computed, reactive, toRefs } from "vue";
 import "./index.scss";
 import { useStore } from '@/store'
@@ -49,13 +66,17 @@ import { DocumentsActionTypes } from '@/store/modules/documents/action-types';
 export default defineComponent({
   name: "addCateProduct",
   setup(){
-    const state = reactive({
+    const state:State = reactive({
       title: 'anhquy',
       description: '',
       createdBy: '',
       assignedTo: '',
       subcate:[],
-      cate:[]
+      cateName:'',
+      subcateName:'',
+      childCateName:'',
+      cate:[],
+      nameProduct:''
     })
     const store = useStore()
     async function fetchDocuments() {
@@ -66,17 +87,27 @@ export default defineComponent({
       } catch (error) {
         console.error('fetchDocuments', error);
       }
+      console.log(state.nameProduct);
+      await store.dispatch(DocumentsActionTypes.SET_NAME_PRODUCT, state.nameProduct);
     }
-    const filterSubcategory = async (id:Number) =>{
+    const filterSubcategory = async (item:any) =>{
       // state.subcate = tasks.filter(item => item.id == id)
-      await store.dispatch(DocumentsActionTypes.FILTER_SUBCATEGORY, id)
+      state.cateName = item.name
+      await store.dispatch(DocumentsActionTypes.FILTER_SUBCATEGORY, item.id)
     }
 
-    const filterChilSubcategory = async (id:Number) =>{
-      await store.dispatch(DocumentsActionTypes.FILTER_CHILDSUBCATEGORY, id)
+    const nameProductKeyup = async (data:any) =>{
+      console.log(data.value)
+    }
+    const filterChilSubcategory = async (item:any) =>{
+      state.subcateName = item.name
+      await store.dispatch(DocumentsActionTypes.FILTER_CHILDSUBCATEGORY, item.id)
     }
 
-    const tasks = computed(() => {console.log(store.state.documents.categories); return store.state.documents.categories})
+    const chooseChildCate = async (item:any) =>{
+      state.childCateName = item.name
+    }
+    const tasks = computed(() => {return store.state.documents.categories})
     const subCategoies = computed(() => {console.log(store.state.documents.subcategoris); return store.state.documents.subcategoris})
     const childCategories = computed(() => {console.log(store.state.documents.childCategoris); return store.state.documents.childCategoris})
     return {
@@ -86,6 +117,8 @@ export default defineComponent({
       subCategoies,
       childCategories,
       filterChilSubcategory,
+      chooseChildCate,
+      nameProductKeyup,
       ...toRefs(state)
     };
   }

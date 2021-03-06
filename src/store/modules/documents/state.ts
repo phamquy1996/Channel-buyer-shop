@@ -5,8 +5,8 @@ export type Category = {
   name: String,
   status: Number,
   image: String,
-  subCategories : Subcategory[],
-  childCategoris : ChildCategory[]
+  subCategories : Subcategory[] | undefined,
+  childCategoris : ChildCategory[] | undefined
 }
 
 export type Subcategory = {
@@ -14,7 +14,7 @@ export type Subcategory = {
   name: String,
   status: Number,
   image: String,
-  childCategoris : ChildCategory[]
+  childCategories : ChildCategory[]
 }
 
 export type ChildCategory = {
@@ -23,23 +23,21 @@ export type ChildCategory = {
   status: Number,
   image: String
 }
-export type Categories = {
-  categories : Category[]
-}
 
-export type Subcategories = {
-  Subcategories : Subcategory[]
-}
 export type State = {
   data: UserDocuments | null;
   categories : Category[];
   subcategoris : Subcategory[] | undefined;
   childCategoris : ChildCategory[] |undefined;
+  category: ChildCategory | undefined;
+  nameProduct: String
 }
 
 export const state: State = {
   data: null,
   categories: [],
   subcategoris : [],
-  childCategoris : []
+  childCategoris : [],
+  category: undefined,
+  nameProduct: ''
 };
