@@ -63,6 +63,7 @@ import { defineComponent, computed, reactive, toRefs } from "vue";
 import "./index.scss";
 import { useStore } from '@/store'
 import { DocumentsActionTypes } from '@/store/modules/documents/action-types';
+
 export default defineComponent({
   name: "addCateProduct",
   setup(){

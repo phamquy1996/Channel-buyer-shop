@@ -35,6 +35,10 @@ export interface Actions {
     { commit }: AugmentedActionContext,
     nameProduct: String
   ): Promise<boolean>;
+  [DocumentsActionTypes.FETCH_SHIPPINGS](
+    { commit }: AugmentedActionContext,
+    someId: number, // Obsolete in here but left as an example
+  ): Promise<boolean>;
 }
 
 export const actions: ActionTree<State, RootState> & Actions = {
@@ -82,11 +86,22 @@ export const actions: ActionTree<State, RootState> & Actions = {
       });
     });
   },
-
   async [DocumentsActionTypes.SET_NAME_PRODUCT]({ commit }, someId: String) {
     return new Promise(() => {
       commit(DocumentsMutationTypes.SET_NAME_PRODUCT, {nameProduct: someId});
       return true
+    });
+  },
+  async [DocumentsActionTypes.FETCH_SHIPPINGS]({ commit }, someId: number) {
+    return new Promise(() => {
+      setTimeout(() => {
+        axios.get(`http://localhost:8082/api/v1/shipping/all`)
+        .then(res => {
+          console.log(res.data);
+          commit(DocumentsMutationTypes.SET_SHIPPINGS, res.data);
+        })
+        return true;
+      });
     });
   },
 };

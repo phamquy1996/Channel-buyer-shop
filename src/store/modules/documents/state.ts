@@ -17,11 +17,34 @@ export type Subcategory = {
   childCategories : ChildCategory[]
 }
 
+export type Shipping = {
+  id: Number,
+  name: String,
+  maxgram: Number,
+  mingram: Number,
+  money_shipping: Number,
+  status: Boolean
+}
+
 export type ChildCategory = {
   id: Number,
   name: String,
   status: Number,
   image: String
+}
+
+export type Classify = {
+  id: Number,
+  name: String,
+  status: Number,
+  qty: Number
+}
+
+export type SubClassify = {
+  id: Number,
+  name: String,
+  status: Number,
+  qty: Number
 }
 
 export type State = {
@@ -30,7 +53,8 @@ export type State = {
   subcategoris : Subcategory[] | undefined;
   childCategoris : ChildCategory[] |undefined;
   category: ChildCategory | undefined;
-  nameProduct: String
+  nameProduct: String,
+  shippings: Shipping[] 
 }
 
 export const state: State = {
@@ -39,5 +63,6 @@ export const state: State = {
   subcategoris : [],
   childCategoris : [],
   category: undefined,
-  nameProduct: ''
+  nameProduct: '',
+  shippings: []
 };

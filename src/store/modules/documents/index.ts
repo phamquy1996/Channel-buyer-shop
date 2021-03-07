@@ -5,15 +5,11 @@ import {
   Module,
 } from 'vuex';
 
-// TODO: How to surpass cyclical dependency linting errors cleanly?
-// eslint-disable-next-line import/no-cycle
 import { RootState } from '@/store';
 
 import { state } from './state';
-// eslint-disable-next-line import/no-cycle
 import { getters, Getters } from './getters';
 import { mutations, Mutations } from './mutations';
-// eslint-disable-next-line import/no-cycle
 import { actions, Actions } from './actions';
 
 import type { State } from './state';
@@ -44,7 +40,4 @@ export const store: Module<State, RootState> = {
   getters,
   mutations,
   actions,
-  // TODO: With namespaced option turned on, having problem how to use dispatch with action types...
-  // But without it, a bigger store might have clashes in namings
-  // namespaced: true,
 };

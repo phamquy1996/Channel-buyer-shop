@@ -1,8 +1,8 @@
-// TODO: Remove no-shadow eslint disable after fixed: https://github.com/typescript-eslint/typescript-eslint/issues/2484
-// eslint-disable-next-line no-shadow
 export enum DocumentsMutationTypes {
   SET_DATA = 'SET_DATA',
   SET_SUBCATEGORY = 'SET_SUBCATEGORY',
   SET_CHILDSUBCATEGORY = 'SET_CHILDSUBCATEGORY',
-  SET_NAME_PRODUCT = 'SET_NAME_PRODUCT'
+  SET_NAME_PRODUCT = 'SET_NAME_PRODUCT',
+  SET_SHIPPINGS = 'SET_SHIPPINGS',
+  SET_SHIPPING = 'SET_SHIPPING'
 }
