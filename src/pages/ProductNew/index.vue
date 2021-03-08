@@ -6,7 +6,7 @@
         <div class="form-group">
           <div class="name">*Tên sản phẩm</div>
           <div class="form-input">
-            <input type="text" value="nameProduct"/>
+            <input type="text" value="nameProduct" />
           </div>
         </div>
         <div class="form-group">
@@ -19,8 +19,8 @@
           <div class="name">*Tên sản phẩm</div>
           <div class="form-input">
             <p>
-              {{tasks.authorName}} > {{tasks.name}} > Hóa chất diệt
-              côn trùng
+              {{ tasks.authorName }} > {{ tasks.name }} > Hóa chất diệt côn
+              trùng
             </p>
           </div>
         </div>
@@ -53,10 +53,18 @@
           <div class="name">Nhóm phân loại 1</div>
           <div class="form-classify">
             <div>
-              <input type="text" placeholder="Nhập tên Nhóm phân loại hàng, ví dụ: màu sắc, kích thước v.v"/>
+              <input
+                type="text"
+                placeholder="Nhập tên Nhóm phân loại hàng, ví dụ: màu sắc, kích thước v.v"
+              />
             </div>
-            <div v-for="(item,index) in classifies" :key="index">
-              <input type="text" placeholder="Nhập vào" v-model="item.name" @keyup="data"/>
+            <div v-for="(item, index) in classifies" :key="index">
+              <input
+                type="text"
+                placeholder="Nhập vào"
+                v-model="item.name"
+                @keyup="data"
+              />
             </div>
             <div @click="addClassify()" class="add-form">Đã thêm</div>
           </div>
@@ -68,10 +76,18 @@
           <div class="name">Nhóm phân loại 2</div>
           <div v-if="isShowSubClassifies" class="form-classify">
             <div>
-              <input type="text" placeholder="Nhập tên phân loại, ví dụ: Size, v.v"/>
+              <input
+                type="text"
+                placeholder="Nhập tên phân loại, ví dụ: Size, v.v"
+              />
             </div>
-            <div v-for="(item,index) in subClassifies" :key="index" >
-              <input type="text" placeholder="Nhập vào" v-model="item.name" @keyup="data" />
+            <div v-for="(item, index) in subClassifies" :key="index">
+              <input
+                type="text"
+                placeholder="Nhập vào"
+                v-model="item.name"
+                @keyup="data($event, index)"
+              />
             </div>
             <div @click="addSubClassify()" class="add-form">Đã thêm</div>
           </div>
@@ -92,18 +108,29 @@
                 <div>Gía</div>
                 <div>Kho hàng</div>
               </div>
-              <div class="content-table" v-for="item in classifies" :key="item.id">
+              <div
+                class="content-table"
+                v-for="item in classifies"
+                :key="item.id"
+              >
                 <div class="content-left-table">
                   {{ item.name }}
                 </div>
-                <div class="content-right-table" v-if="subClassifies.length > 0">
-                  <div class="content-table-list" v-for="(prod,index) in subClassifies" :key="index">
-                    <div class="content-right-item">{{prod.name}}</div>
+                <div
+                  class="content-right-table"
+                  v-if="item.subClassifies.length > 0"
+                >
+                  <div
+                    class="content-table-list"
+                    v-for="(prod, index) in item.subClassifies"
+                    :key="index"
+                  >
+                    <div class="content-right-item">{{ prod.name }}</div>
                     <div class="content-right-item">
-                      <input type="text" v-model="prod.price">
+                      <input type="text" v-model="prod.price" />
                     </div>
                     <div class="content-right-item">
-                      <input type="text" v-model="prod.qty">
+                      <input type="text" v-model="prod.qty" />
                     </div>
                   </div>
                 </div>
@@ -118,43 +145,69 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="infor-basic">
         <h3>Quản lý hình ảnh</h3>
         <div class="form-group-image">
           <div class="name">*Tên sản phẩm</div>
           <div class="content-img">
-            <input type="file" multiple id="image_file" style="display:none;" @change="onUploadIMGCover($event,index)">
+            <input
+              type="file"
+              multiple
+              id="image_file"
+              style="display: none"
+              @change="onUploadIMGCover($event, index)"
+            />
             <div class="images">
               <label for="image_file" v-if="!image">
                 <div class="image">
                   <div class="plus-img">+</div>
                 </div>
               </label>
-              <img v-else :src="`http://localhost:8082/upload/static/images/gallery/${image}`" alt="" style="width:100%;height:100%" class="image">
+              <img
+                v-else
+                :src="`http://localhost:8082/upload/static/images/gallery/${image}`"
+                alt=""
+                style="width: 100%; height: 100%"
+                class="image"
+              />
               <div class="title-img">Ảnh chính</div>
             </div>
             <!-- <video width="320" height="240" controls>
               <source src="http://localhost:8082/upload/static/images/gallery/CÔ GÁI GUICCI - SOÁI NHI (Cover).mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video> -->
-            <div class="images" v-for="(item,index) in images" :key="index">
+            <div class="images" v-for="(item, index) in images" :key="index">
               <label for="images_files">
-                <img :src="`http://localhost:8082/upload/static/images/gallery/${item.image}`" alt="" style="width:100%;height:100%" class="image">
+                <img
+                  :src="`http://localhost:8082/upload/static/images/gallery/${item.image}`"
+                  alt=""
+                  style="width: 100%; height: 100%"
+                  class="image"
+                />
               </label>
-              <div class="title-img">Hình ảnh {{index + 1}}</div>
+              <div class="title-img">Hình ảnh {{ index + 1 }}</div>
             </div>
-            <label for="images_files" v-for="(item,index) in isShowFormUpload" :key="index">
-               <input type="file" multiple id="images_files" style="display:none;" @change="onFileChanged($event,index)">
-                <div class="images">
-                  <div class="image">
-                    <div class="plus-img">+</div>
-                  </div>
-                  <div class="title-img">Hình ảnh {{index + 1}}</div>
+            <label
+              for="images_files"
+              v-for="(item, index) in isShowFormUpload"
+              :key="index"
+            >
+              <input
+                type="file"
+                multiple
+                id="images_files"
+                style="display: none"
+                @change="onFileChanged($event, index)"
+              />
+              <div class="images">
+                <div class="image">
+                  <div class="plus-img">+</div>
                 </div>
+                <div class="title-img">Hình ảnh {{ index + 1 }}</div>
+              </div>
             </label>
-            
+
             <!-- <div class="images">
               <div class="image">
                 <div class="plus-img">+</div>
@@ -210,23 +263,36 @@
         <div class="form-group">
           <div class="name">*Cân nặng sau khi đóng gói</div>
           <div class="form-input">
-            <input type="number" placeholder="Nhập vào cân nặng" v-model="gram"/>
+            <input
+              type="number"
+              placeholder="Nhập vào cân nặng"
+              v-model="gram"
+            />
           </div>
         </div>
         <div class="form-group">
           <div class="name">*Phí vận chuyển</div>
           <div class="form-input">
             <!-- <textarea></textarea> -->
-            <div style="display:flex;" v-for="item in shippings" :key="item.id" class="wrap-shipping">
+            <div
+              style="display: flex"
+              v-for="item in shippings"
+              :key="item.id"
+              class="wrap-shipping"
+            >
               <div class="shipping-left">
-                <div>{{item.name}}</div>
-                <div>(Tối đa {{item.maxgram}}g)</div>
+                <div>{{ item.name }}</div>
+                <div>(Tối đa {{ item.maxgram }}g)</div>
                 <div>Shoppe vận chuyển</div>
               </div>
-              <div  class="shipping-right">
-                <div v-if=" gram <= item.maxgram && gram >= item.mingram">₫{{item.money_shipping}}</div>
+              <div class="shipping-right">
+                <div v-if="gram <= item.maxgram && gram >= item.mingram">
+                  ₫{{ item.money_shipping }}
+                </div>
                 <div v-if="gram > item.maxgram">Khối lượng vượt quá</div>
-                <div v-if="gram > 0 && gram < item.mingram">Cân nặng không hợp lệ </div>
+                <div v-if="gram > 0 && gram < item.mingram">
+                  Cân nặng không hợp lệ
+                </div>
                 <div v-if="gram == ''">Nhập khối lượng</div>
                 <div><ToggleSwitch :status="item" /></div>
               </div>
@@ -239,8 +305,8 @@
         <div class="form-group">
           <div class="name">*Hàng đặt trước</div>
           <div class="radio">
-            <input type="radio" name="order"> Đặt trước
-            <input type="radio" name="order"> Không
+            <input type="radio" name="order" /> Đặt trước
+            <input type="radio" name="order" /> Không
           </div>
         </div>
         <div class="form-group">
@@ -265,7 +331,7 @@
       <div class="infor-basic bottom">
         <div>
           <button @click="click()">Hủy</button>
-          <button>Lưu & Ẩn</button>
+          <button @click="saveProduct()">Lưu & Ẩn</button>
           <button>Lưu & Hiển thị</button>
         </div>
       </div>
@@ -276,126 +342,212 @@
 <script lang="ts">
 import { defineComponent, computed, reactive, toRefs, onMounted } from "vue";
 import "./index.scss";
-import { useStore } from '@/store'
-import axios from 'axios'
-import { Shipping, Classify, SubClassify } from './../../store/modules/documents/state'
-import { DocumentsActionTypes } from '@/store/modules/documents/action-types';
-import ToggleSwitch from './../../components/ToggleSwitch/index.vue'
-interface Image{
-  image: String
+import { useStore } from "@/store";
+import axios from "axios";
+import {
+  Shipping,
+  Classify,
+  SubClassify,
+} from "./../../store/modules/documents/state";
+import { DocumentsActionTypes } from "@/store/modules/documents/action-types";
+import ToggleSwitch from "./../../components/ToggleSwitch/index.vue";
+
+interface Image {
+  image: String;
 }
-interface State{
-  images: Array<Image>,
-  isShowFormUpload: any,
-  gram: Number,
-  image: String,
-  description: String,
-  classifies: Classify[],
-  subClassifies: SubClassify[],
-  isShowclassifies: boolean,
-  isShowSubClassifies: boolean,
+interface State {
+  images: Array<Image>;
+  isShowFormUpload: any;
+  gram: Number;
+  image: String;
+  description: String;
+  classifies: Classify[];
+  subClassifies: SubClassify[];
+  isShowclassifies: boolean;
+  isShowSubClassifies: boolean;
+  name: String;
 }
 export default defineComponent({
   name: "addCateProduct",
-  components:{
-    ToggleSwitch
+  components: {
+    ToggleSwitch,
   },
-  setup(){
-    const state:State = reactive({
+  setup() {
+    const state: State = reactive({
       images: [],
-      image: '',
+      image: "",
       isShowFormUpload: 8,
       gram: {} as any,
-      description:'',
+      description: "",
       isShowclassifies: false,
       isShowSubClassifies: false,
       classifies: [],
       subClassifies: [],
-    })
-   
-    const store = useStore()
-    onMounted( async ()=>{
-      await store.dispatch(DocumentsActionTypes.FETCH_SHIPPINGS,1)
-    })
-    
-    const addClassify = () =>{
-      var classify ={
-        id:1,
-        status: 1,
-        name:'',
-        qty:1,
-        price:0
-      }
-      state.classifies.push(classify)
-    }
+      name: "anhquy",
+    });
 
-    const addSubClassify = () =>{
-      var subClassify ={
-        id:1,
-        status: 1,
-        name:'',
-        qty:1,
-        price:0
-      }
-      state.subClassifies.push(subClassify)
-    }
-    const onUploadIMGCover = async (event:any, id: Number) =>{
-      event.target.files;
-      var formData = new FormData();
-      for (const key of Object.keys(event.target.files)) {
-        formData.append('files', event.target.files[key])
-      }
-      const header = {'Content-Type': 'multipart/form-data'}
-      const data = await axios.post('http://localhost:8082/upload/', formData, {responseType: 'text'})
-      state.image = data.data[0].image
-    }
+    const store = useStore();
+    onMounted(async () => {
+      await store.dispatch(DocumentsActionTypes.FETCH_SHIPPINGS, 1);
+    });
 
-    const onFileChanged = async (event: any, id: Number) =>  {
-      event.target.files;
-      var formData = new FormData();
-      for (const key of Object.keys(event.target.files)) {
-        formData.append('files', event.target.files[key])
+    const addClassify = () => {
+      var classify: Classify = {
+        id: Math.random(),
+        status: 1,
+        name: "",
+        qty: 1,
+        price: 0,
+        subClassifies: [],
+      };
+
+      var subClassify = {
+        id: Math.random(),
+        status: 1,
+        name: "",
+        qty: 1,
+        price: 0,
+      };
+      classify.subClassifies.push();
+
+      for (var i = 0; i < state.subClassifies.length; i++) {
+        var subClassify = {
+          id: Math.random(),
+          status: 1,
+          name: "",
+          qty: 1,
+          price: 0,
+        };
+        classify.subClassifies.push(subClassify);
       }
-      const header = {'Content-Type': 'multipart/form-data'}
-      const data = await axios.post('http://localhost:8082/upload/', formData, {responseType: 'text'})
-      data.data.forEach((element:any) => {
-        state.images.push(element)
+      state.classifies.push(Object.assign({}, classify));
+
+      // state.classifies.map((item)=>{
+      //   var subClassify ={
+      //     id: Math.random(),
+      //     status: 1,
+      //     name:'',
+      //     qty:1,
+      //     price:0
+      //   }
+      //   classify.SubClassifies.push(subClassify)
+      // })
+    };
+
+    const addSubClassify = () => {
+      var subClassify = {
+        id: Math.random(),
+        status: 1,
+        name: "",
+        qty: 1,
+        price: 0,
+      };
+      state.subClassifies.push(Object.assign({}, subClassify));
+      state.classifies.map((item) => {
+        var subClassify = {
+          id: Math.random(),
+          status: 1,
+          name: "",
+          qty: 1,
+          price: 0,
+        };
+        item.subClassifies.push(subClassify);
       });
-      state.isShowFormUpload = 8
-      state.isShowFormUpload = state.isShowFormUpload - state.images.length
-    }
-
-    const showFormClassifies = () =>{
-      state.isShowclassifies = true
-      var classify ={
-        id:1,
-        status: 1,
-        name:'',
-        qty:1,
-        price:0
+      console.log(state.classifies);
+    };
+    const onUploadIMGCover = async (event: any, id: Number) => {
+      event.target.files;
+      var formData = new FormData();
+      for (const key of Object.keys(event.target.files)) {
+        formData.append("files", event.target.files[key]);
       }
-      state.classifies.push(classify)
-    }
+      const header = { "Content-Type": "multipart/form-data" };
+      const data = await axios.post("http://localhost:8082/upload/", formData, {
+        responseType: "text",
+      });
+      state.image = data.data[0].image;
+    };
 
-    const showFormSubClassifies = () =>{
-      state.isShowSubClassifies = true
-      var subClassify ={
-        id:1,
-        status: 1,
-        name:'',
-        qty:1,
-        price:0
+    const onFileChanged = async (event: any, id: Number) => {
+      event.target.files;
+      var formData = new FormData();
+      for (const key of Object.keys(event.target.files)) {
+        formData.append("files", event.target.files[key]);
       }
-      state.subClassifies.push(subClassify)
-    }
+      const header = { "Content-Type": "multipart/form-data" };
+      const data = await axios.post("http://localhost:8082/upload/", formData, {
+        responseType: "text",
+      });
+      data.data.forEach((element: any) => {
+        state.images.push(element);
+      });
+      state.isShowFormUpload = 8;
+      state.isShowFormUpload = state.isShowFormUpload - state.images.length;
+    };
 
-    const data = () =>{
-      console.log(1)
-    }
-    const tasks = computed(() => {console.log(store.state.documents.category); return store.state.documents.category})
-    const nameProduct = computed(() => {console.log(store.state.documents.nameProduct); return store.state.documents.nameProduct})
-    const shippings = computed(()=>{ console.log(store.state.documents.shippings); return store.state.documents.shippings})
-    return{
+    const showFormClassifies = () => {
+      state.isShowclassifies = true;
+      var classify = {
+        id: Math.random(),
+        status: 1,
+        name: "",
+        qty: 1,
+        price: 0,
+        subClassifies: [],
+      };
+      state.classifies.push(Object.assign({}, classify));
+    };
+
+    const showFormSubClassifies = () => {
+      state.isShowSubClassifies = true;
+      var subClassify = {
+        id: Math.random(),
+        status: 1,
+        name: "",
+        qty: 1,
+        price: 0,
+      };
+      state.subClassifies.push(Object.assign({}, subClassify));
+      state.classifies.map((item) => {
+        item.subClassifies.push(subClassify);
+      });
+    };
+
+    const data = (event: any, id: number) => {
+      state.classifies.map((item) => {
+        const index = item.subClassifies.findIndex(
+          (item, index) => index === id
+        );
+        if (index === -1) return;
+        item.subClassifies[index] = {
+          ...item.subClassifies[index],
+          name: event.target.value,
+        };
+      });
+    };
+
+    const saveProduct = async () => {
+      var data = {
+        name : state.name,
+        imagesDTO: state.images,
+        image: state.image,
+        clasifyDTO: state.classifies,
+        shippings: shippings.value,
+        description: state.description
+      }
+      console.log(data)
+      await store.dispatch(DocumentsActionTypes.ADD_PRODUCT, data);
+    };
+    const tasks = computed(() => {
+      return store.state.documents.category;
+    });
+    const nameProduct = computed(() => {
+      return store.state.documents.nameProduct;
+    });
+    const shippings = computed(() => {
+      return store.state.documents.shippings;
+    });
+    return {
       tasks,
       nameProduct,
       onFileChanged,
@@ -406,8 +558,9 @@ export default defineComponent({
       addClassify,
       addSubClassify,
       data,
-      ...toRefs(state)
-    }
-  }
+      saveProduct,
+      ...toRefs(state),
+    };
+  },
 });
 </script>
