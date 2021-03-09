@@ -533,7 +533,10 @@ export default defineComponent({
         image: state.image,
         clasifyDTO: state.classifies,
         shippings: shippings.value,
-        description: state.description
+        description: state.description,
+        childcategory_id: 1,
+        subcategory_id: 4,
+        category_id: 4,
       }
       console.log(data)
       await store.dispatch(DocumentsActionTypes.ADD_PRODUCT, data);
