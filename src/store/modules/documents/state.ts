@@ -1,5 +1,5 @@
 import { UserDocuments } from '@/@types';
-
+import  Long  from 'long'
 export type Category = {
   id: Number,
   name: String,
@@ -18,7 +18,7 @@ export type Subcategory = {
 }
 
 export type Shipping = {
-  id: Number,
+  id: Long,
   name: String,
   maxgram: Number,
   mingram: Number,

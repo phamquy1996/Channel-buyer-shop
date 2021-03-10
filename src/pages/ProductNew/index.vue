@@ -377,7 +377,7 @@ export default defineComponent({
       images: [],
       image: "",
       isShowFormUpload: 8,
-      gram: {} as any,
+      gram: 0,
       description: "",
       isShowclassifies: false,
       isShowSubClassifies: false,
@@ -528,15 +528,16 @@ export default defineComponent({
 
     const saveProduct = async () => {
       var data = {
-        name : state.name,
+        name : 'Áo thun Unisex N7 Basic Tee phông trơn nam nữ tay lỡ oversize form rộng 12 màu',
         imagesDTO: state.images,
         image: state.image,
         clasifyDTO: state.classifies,
         shippings: shippings.value,
         description: state.description,
         childcategory_id: 1,
-        subcategory_id: 4,
-        category_id: 4,
+        subcategory_id: 1,
+        category_id: 1,
+        userSaler_id: 1,
       }
       console.log(data)
       await store.dispatch(DocumentsActionTypes.ADD_PRODUCT, data);

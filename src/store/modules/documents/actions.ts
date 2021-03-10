@@ -115,6 +115,7 @@ export const actions: ActionTree<State, RootState> & Actions = {
 
   async [DocumentsActionTypes.ADD_PRODUCT]({ commit }, someId: Object) {
     return new Promise(() => {
+      console.log(someId)
       axios.post(
         "http://localhost:8082/api/v1/product/add",
         someId,
