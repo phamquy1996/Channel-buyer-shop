@@ -37,15 +37,16 @@ export type Classify = {
   id: Number,
   name: String,
   status: Number,
-  qty: Number,
-  price: Number
-  subClassifies : SubClassify[]
+  qty: number,
+  price: number
+  subClassifies : SubClassify[],
+  image: string
 }
 
 export type SubClassify = {
   id: Number,
   name: String,
-  status: Number,
+  status: number,
   qty: number | undefined,
   price: number
 }

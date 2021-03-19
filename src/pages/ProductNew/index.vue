@@ -49,6 +49,22 @@
       </div>
       <div class="infor-basic">
         <h3>Thông tin bán hàng</h3>
+        <div class="form-group" v-if="!isShowclassifies">
+          <div class="name">*Giá</div>
+          <div class="form-input">
+            <input type="number" placeholder="Nhập vào giá" v-model="price" />
+          </div>
+        </div>
+        <div class="form-group" v-if="!isShowclassifies">
+          <div class="name">*Kho hàng</div>
+          <div class="form-input">
+            <input
+              type="number"
+              placeholder="Nhập vào số lượng"
+              v-model="qty"
+            />
+          </div>
+        </div>
         <div class="form-group" v-if="isShowclassifies">
           <div class="name">Nhóm phân loại 1</div>
           <div class="form-classify">
@@ -56,6 +72,7 @@
               <input
                 type="text"
                 placeholder="Nhập tên Nhóm phân loại hàng, ví dụ: màu sắc, kích thước v.v"
+                v-model="classify"
               />
             </div>
             <div v-for="(item, index) in classifies" :key="index">
@@ -69,16 +86,20 @@
             <div @click="addClassify()" class="add-form">Đã thêm</div>
           </div>
         </div>
-        <div @click="showFormSubClassifies()">
-          <div v-if="isShowSubClassifies == false">Thêm</div>
+        <div @click="showFormSubClassifies()" v-if="isShow">
+          <div class="form-group">
+            <div class="name">Nhóm phân loại 2</div>
+            <div class="add-form" style="width: 84%">Thêm</div>
+          </div>
         </div>
         <div class="form-group" v-if="isShowclassifies">
-          <div class="name">Nhóm phân loại 2</div>
+          <div class="name" v-if="!isShow">Nhóm phân loại 2</div>
           <div v-if="isShowSubClassifies" class="form-classify">
             <div>
               <input
                 type="text"
                 placeholder="Nhập tên phân loại, ví dụ: Size, v.v"
+                v-model="subclassify"
               />
             </div>
             <div v-for="(item, index) in subClassifies" :key="index">
@@ -95,16 +116,16 @@
         <div class="form-group" v-if="!isShowclassifies">
           <div class="name">Phân loại hàng</div>
           <div class="form-input" @click="showFormClassifies()">
-            <div>Thêm nhóm phân loại hàng</div>
+            <div class="add-form">Thêm nhóm phân loại hàng</div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" v-if="isShowclassifies">
           <div class="name">*Tên sản phẩm</div>
           <div class="form-input">
             <div class="table-classify">
               <div class="title-table">
-                <div>Tên</div>
-                <div v-if="subClassifies.length">Tên</div>
+                <div>{{ classify }}</div>
+                <div v-if="subClassifies.length">{{ subclassify }}</div>
                 <div>Gía</div>
                 <div>Kho hàng</div>
               </div>
@@ -127,18 +148,22 @@
                   >
                     <div class="content-right-item">{{ prod.name }}</div>
                     <div class="content-right-item">
-                      <input type="text" v-model="prod.price" />
+                      <input type="number" v-model="prod.price" />
                     </div>
                     <div class="content-right-item">
-                      <input type="text" v-model="prod.qty" />
+                      <input type="number" v-model="prod.qty" />
                     </div>
                   </div>
                 </div>
                 <div class="content-right-table" v-else>
                   <div class="content-table-list">
-                    <div class="content-right-item">áddsaasd</div>
-                    <div class="content-right-item">áddsaasd</div>
-                    <div class="content-right-item">áddsaasd</div>
+                    <div class="content-right-item">
+                      <input type="number" v-model="item.price" />
+                    </div>
+                    <div class="content-right-item">
+                      <input type="number" v-model="item.qty" />
+                    </div>
+                    <!-- <div class="content-right-item">áddsaasd</div> -->
                   </div>
                 </div>
               </div>
@@ -164,13 +189,15 @@
                   <div class="plus-img">+</div>
                 </div>
               </label>
-              <img
-                v-else
-                :src="`http://localhost:8082/upload/static/images/gallery/${image}`"
-                alt=""
-                style="width: 100%; height: 100%"
-                class="image"
-              />
+              <div v-else>
+                <img
+                  :src="`http://localhost:8082/upload/static/images/gallery/${image}`"
+                  alt=""
+                  style="width: 100%; height: 100%"
+                  class="image"
+                />
+                <div><i class="far fa-trash-alt" @click="image = ''"></i></div>
+              </div>
               <div class="title-img">Ảnh chính</div>
             </div>
             <!-- <video width="320" height="240" controls>
@@ -178,15 +205,25 @@
               Your browser does not support the video tag.
             </video> -->
             <div class="images" v-for="(item, index) in images" :key="index">
-              <label for="images_files">
+              <div v-if="item.image">
                 <img
                   :src="`http://localhost:8082/upload/static/images/gallery/${item.image}`"
                   alt=""
                   style="width: 100%; height: 100%"
                   class="image"
                 />
-              </label>
-              <div class="title-img">Hình ảnh {{ index + 1 }}</div>
+                <div>
+                  <i class="far fa-trash-alt" @click="removeImg(item)"></i>
+                </div>
+              </div>
+              <div v-else>
+                <label for="images_files">
+                    <div class="image">
+                      <div class="plus-img">+</div>
+                    </div>
+                </label>
+              </div>
+              <div class="title-img">Hình ảnh</div>
             </div>
             <label
               for="images_files"
@@ -204,34 +241,9 @@
                 <div class="image">
                   <div class="plus-img">+</div>
                 </div>
-                <div class="title-img">Hình ảnh {{ index + 1 }}</div>
+                <div class="title-img">Hình ảnh</div>
               </div>
             </label>
-
-            <!-- <div class="images">
-              <div class="image">
-                <div class="plus-img">+</div>
-              </div>
-              <div class="title-img">Ảnh bìa</div>
-            </div>
-            <div class="images">
-              <div class="image">
-                <div class="plus-img">+</div>
-              </div>
-              <div class="title-img">Ảnh bìa</div>
-            </div>
-            <div class="images">
-              <div class="image">
-                <div class="plus-img">+</div>
-              </div>
-              <div class="title-img">Ảnh bìa</div>
-            </div>
-            <div class="images">
-              <div class="image">
-                <div class="plus-img">+</div>
-              </div>
-              <div class="title-img">Ảnh bìa</div>
-            </div> -->
           </div>
         </div>
         <div class="form-group-image">
@@ -246,13 +258,28 @@
           </div>
         </div>
         <div class="form-group-image">
-          <div class="name">Nhóm phân loại</div>
+          <div class="name" v-if="isShowclassifies">Nhóm phân loại</div>
+          <div class="content-img">
+            <div
+              class="images"
+              v-for="(item, index) in classifies"
+              :key="index"
+            >
+              <div class="image">
+                <div class="plus-img">+</div>
+              </div>
+              <div class="title-img">Phân loại hàng</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group-image">
+          <div class="name">Bảng quy đổi kích cỡ</div>
           <div class="content-img">
             <div class="images">
               <div class="image">
                 <div class="plus-img">+</div>
               </div>
-              <div class="title-img">Phân loại hàng</div>
+              <div class="title-img">Xem ví dụ ở đây</div>
             </div>
           </div>
         </div>
@@ -305,16 +332,16 @@
         <div class="form-group">
           <div class="name">*Hàng đặt trước</div>
           <div class="radio">
-            <input type="radio" name="order" /> Đặt trước
-            <input type="radio" name="order" /> Không
+            <input type="radio" name="order" v-model="isOrderBefore" value="1"/> Đặt trước
+            <input type="radio" name="order" v-model="isOrderBefore" value="0"/> Không
           </div>
         </div>
         <div class="form-group">
           <div class="name">*Tình trạng</div>
           <div class="form-input">
-            <select>
+            <select v-model="isNew" >
               <option value="1">Mới</option>
-              <option value="0">Mới</option>
+              <option value="0">Cũ</option>
             </select>
           </div>
         </div>
@@ -366,6 +393,13 @@ interface State {
   isShowclassifies: boolean;
   isShowSubClassifies: boolean;
   name: String;
+  isShow: Boolean;
+  classify: string;
+  subclassify: string;
+  price: string;
+  qty: string;
+  isNew: number;
+  isOrderBefore: number
 }
 export default defineComponent({
   name: "addCateProduct",
@@ -378,12 +412,19 @@ export default defineComponent({
       image: "",
       isShowFormUpload: 8,
       gram: 0,
+      isShow: false,
       description: "",
       isShowclassifies: false,
       isShowSubClassifies: false,
       classifies: [],
       subClassifies: [],
       name: "anhquy",
+      classify: "",
+      subclassify: "",
+      price: "",
+      qty: "",
+      isNew: 1,
+      isOrderBefore: 0
     });
 
     const store = useStore();
@@ -391,6 +432,18 @@ export default defineComponent({
       await store.dispatch(DocumentsActionTypes.FETCH_SHIPPINGS, 1);
     });
 
+    const removeImg = (item:Image) =>{
+      let index = state.images.indexOf(item)
+      console.log(state.images)
+      state.images.splice(index,1)
+      state.isShowFormUpload + 1
+      // state.images.push(index,1)
+      // let image = {
+      //   image:''
+      // }
+      // state.images.unshift(image)
+      // state.images.unshift(image)
+    }
     const addClassify = () => {
       var classify: Classify = {
         id: Math.random(),
@@ -399,6 +452,7 @@ export default defineComponent({
         qty: 1,
         price: 0,
         subClassifies: [],
+        image: "",
       };
 
       var subClassify = {
@@ -421,17 +475,6 @@ export default defineComponent({
         classify.subClassifies.push(subClassify);
       }
       state.classifies.push(Object.assign({}, classify));
-
-      // state.classifies.map((item)=>{
-      //   var subClassify ={
-      //     id: Math.random(),
-      //     status: 1,
-      //     name:'',
-      //     qty:1,
-      //     price:0
-      //   }
-      //   classify.SubClassifies.push(subClassify)
-      // })
     };
 
     const addSubClassify = () => {
@@ -479,7 +522,7 @@ export default defineComponent({
         responseType: "text",
       });
       data.data.forEach((element: any) => {
-        state.images.push(element);
+        state.images.push(element);  
       });
       state.isShowFormUpload = 8;
       state.isShowFormUpload = state.isShowFormUpload - state.images.length;
@@ -487,6 +530,9 @@ export default defineComponent({
 
     const showFormClassifies = () => {
       state.isShowclassifies = true;
+      state.isShow = true;
+      state.price = '',
+      state.qty = ''
       var classify = {
         id: Math.random(),
         status: 1,
@@ -494,12 +540,14 @@ export default defineComponent({
         qty: 1,
         price: 0,
         subClassifies: [],
+        image: "",
       };
       state.classifies.push(Object.assign({}, classify));
     };
 
     const showFormSubClassifies = () => {
       state.isShowSubClassifies = true;
+      state.isShow = false;
       var subClassify = {
         id: Math.random(),
         status: 1,
@@ -507,10 +555,10 @@ export default defineComponent({
         qty: 1,
         price: 0,
       };
-      state.subClassifies.push(Object.assign({}, subClassify));
-      state.classifies.map((item) => {
-        item.subClassifies.push(subClassify);
-      });
+      // state.subClassifies.push(Object.assign({}, subClassify));
+      // state.classifies.map((item) => {
+      //   item.subClassifies.push(subClassify);
+      // });
     };
 
     const data = (event: any, id: number) => {
@@ -527,19 +575,49 @@ export default defineComponent({
     };
 
     const saveProduct = async () => {
+      const arrayCloneClassify  = [...state.classifies]; 
+      arrayCloneClassify.sort(function (a, b) {
+          return a.price - b.price
+      })
+      var lowest = Number.POSITIVE_INFINITY;
+      var highest = Number.NEGATIVE_INFINITY;
+      var tmp;
+      const arrayCloneSub = [...state.classifies]
+      arrayCloneSub.map((item)=>{
+        if(item.subClassifies[0]){
+          for (var i=item.subClassifies.length-1; i>=0; i--) {
+            tmp = item.subClassifies[i].price;
+            if (tmp < lowest) lowest = tmp;
+            if (tmp > highest) highest = tmp;
+        }  
+        }
+      })
+      console.log(highest, lowest);
+      console.log(arrayCloneClassify[0].price +" value "+ arrayCloneClassify[arrayCloneClassify.length - 1].price) 
       var data = {
-        name : 'Áo thun Unisex N7 Basic Tee phông trơn nam nữ tay lỡ oversize form rộng 12 màu',
+        name:
+          "Áo thun Unisex N7 Basic Tee phông trơn nam nữ tay lỡ oversize form rộng 12 màu",
         imagesDTO: state.images,
         image: state.image,
         clasifyDTO: state.classifies,
         shippings: shippings.value,
         description: state.description,
-        childcategory_id: 1,
-        subcategory_id: 1,
+        childcategory_id: 2,
+        subcategory_id: 2,
         category_id: 1,
-        userSaler_id: 1,
-      }
-      console.log(data)
+        userSaler_id: 2,
+        classfly: state.classify,
+        subclassify: state.subclassify,
+        price: state.price,
+        qty: state.qty,
+        pricemax: state.subClassifies.length ? highest : arrayCloneClassify[arrayCloneClassify.length - 1].price,
+        pricemin: state.subClassifies.length ? lowest : arrayCloneClassify[0].price
+      };
+      
+      // const anhquy = state.classifies.sort(function (a, b) {
+      //     return a.price - b.price
+      // })
+      // const anhquy = state.classifies
       await store.dispatch(DocumentsActionTypes.ADD_PRODUCT, data);
     };
     const tasks = computed(() => {
@@ -563,6 +641,7 @@ export default defineComponent({
       addSubClassify,
       data,
       saveProduct,
+      removeImg,
       ...toRefs(state),
     };
   },
